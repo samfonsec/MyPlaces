@@ -4,7 +4,7 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.samfonsec.myplaces.R;
 import com.samfonsec.myplaces.databinding.ActHomeBinding;
@@ -22,10 +22,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.act_home);
 
-
         HomeViewModel viewModel = new HomeViewModel();
 
-        // start to observe
         viewModel.onLocationsResponse().observe(this, this::onLocationsResponse);
         viewModel.onError().observe(this, this::onError);
 
@@ -36,13 +34,19 @@ public class HomeActivity extends AppCompatActivity {
     private void onLocationsResponse(LocationListEntity locationsList) {
         DialogUtils.hideProgressDialog();
 
-        LocationAdapter locationAdapter = new LocationAdapter(locationsList.getLocations());
+        LocationAdapter locationAdapter = new LocationAdapter(this, locationsList.getLocations());
+        locationAdapter.onItemClick().observe(this, this::onItemClicked);
         binding.rvLocations.setAdapter(locationAdapter);
-        binding.rvLocations.setLayoutManager(new GridLayoutManager(this, 2));
+        binding.rvLocations.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        binding.rvLocations.setItemAnimator(null);
 
     }
 
     private void onError(String message) {
         DialogUtils.showErrorDialog(this, message);
+    }
+
+    private void onItemClicked(int id) {
+
     }
 }

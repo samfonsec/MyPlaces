@@ -5,4 +5,7 @@
     <color name="colorAccent">#FF5876</color>
 
     <color name="brownishGrey">#666666</color>
+    <color name="duckEggBlue">#D0FDEF</color>
+    <color name="lightPink">#FFDAE1</color>
+    <color name="creme">#FCFFB1</color>
 </resources>

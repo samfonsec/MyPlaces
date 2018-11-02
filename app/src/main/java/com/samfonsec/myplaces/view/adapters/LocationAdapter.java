@@ -1,20 +1,31 @@
 package com.samfonsec.myplaces.view.adapters;
 
+import android.arch.lifecycle.MutableLiveData;
+import android.content.Context;
+import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.samfonsec.myplaces.R;
+import com.samfonsec.myplaces.databinding.AdapterLocationItemBinding;
 import com.samfonsec.myplaces.model.LocationEntity;
+import com.samfonsec.myplaces.utils.TypeIcons;
 
 import java.util.List;
+import java.util.Random;
 
 public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemHolder> {
+    private Context context;
     private List<LocationEntity> locations;
+    private int[] colors ={R.color.duckEggBlue, R.color.creme, R.color.lightPink};
+    private MutableLiveData<Integer> onItemClick = new MutableLiveData<>();
 
-    public LocationAdapter(List<LocationEntity> locations) {
+    public LocationAdapter(Context context, List<LocationEntity> locations) {
+        this.context = context;
         this.locations = locations;
     }
 
@@ -22,14 +33,23 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemHo
     @Override
     public ItemHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.location_item_adapter, parent, false);
+        View view = inflater.inflate(R.layout.adapter_location_item, parent, false);
         return new ItemHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
-        LocationEntity location = this.locations.get(position);
+        LocationEntity location = locations.get(position);
+        holder.binding.setLocation(location);
+        holder.binding.tvReview.setText(String.valueOf(location.getReview()));
+        holder.binding.reviewLayout.setReview(location.getReview(), false);
 
+        int iconResId = TypeIcons.getIconByType(location.getType()).getIconRes();
+        holder.binding.ivImage.setImageResource(iconResId);
+        int color = ContextCompat.getColor(context, colors[new Random().nextInt(3)]);
+        holder.binding.vBackground.setBackgroundColor(color);
+
+        holder.binding.getRoot().setOnClickListener(view -> onItemClick.postValue(location.getId()));
     }
 
     @Override
@@ -37,12 +57,16 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemHo
         return locations.size();
     }
 
+    public MutableLiveData<Integer> onItemClick() {
+        return onItemClick;
+    }
+
     class ItemHolder extends RecyclerView.ViewHolder {
-        View view;
+        AdapterLocationItemBinding binding;
 
         ItemHolder(View view) {
             super(view);
-            this.view = view;
+            binding = DataBindingUtil.bind(view);
         }
     }
 }
