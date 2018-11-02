@@ -1,5 +1,6 @@
 package com.samfonsec.myplaces.view.activities;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,10 +9,16 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 
 import com.samfonsec.myplaces.R;
 import com.samfonsec.myplaces.databinding.ActHomeBinding;
+import com.samfonsec.myplaces.model.ArgsDetail;
 import com.samfonsec.myplaces.model.LocationListEntity;
 import com.samfonsec.myplaces.utils.DialogUtils;
 import com.samfonsec.myplaces.view.adapters.LocationAdapter;
 import com.samfonsec.myplaces.viewmodel.HomeViewModel;
+
+import static com.samfonsec.myplaces.view.Constants.ARG_ACTION_BAR_COLOR;
+import static com.samfonsec.myplaces.view.Constants.ARG_ICON_RES_ID;
+import static com.samfonsec.myplaces.view.Constants.ARG_LOCATION_ID;
+import static com.samfonsec.myplaces.view.Constants.BUNDLE_ARGS;
 
 
 public class HomeActivity extends AppCompatActivity {
@@ -46,7 +53,13 @@ public class HomeActivity extends AppCompatActivity {
         DialogUtils.showErrorDialog(this, message);
     }
 
-    private void onItemClicked(int id) {
-
+    private void onItemClicked(ArgsDetail argsDetail) {
+        Bundle args = new Bundle();
+        args.putInt(ARG_LOCATION_ID, argsDetail.getLocationId());
+        args.putInt(ARG_ACTION_BAR_COLOR, argsDetail.getColor());
+        args.putInt(ARG_ICON_RES_ID, argsDetail.getIcon());
+        Intent intent = new Intent(this, DetailActivity.class);
+        intent.putExtra(BUNDLE_ARGS, args);
+        startActivity(intent);
     }
 }

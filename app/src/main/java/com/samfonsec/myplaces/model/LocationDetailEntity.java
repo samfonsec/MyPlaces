@@ -1,8 +1,12 @@
 package com.samfonsec.myplaces.model;
 
-import com.google.gson.annotations.SerializedName;
+import android.databinding.BaseObservable;
+import android.databinding.Bindable;
 
-public class LocationDetailEntity {
+import com.google.gson.annotations.SerializedName;
+import com.samfonsec.myplaces.BR;
+
+public class LocationDetailEntity extends BaseObservable {
     @SerializedName("id")
     private Integer id;
 
@@ -27,37 +31,83 @@ public class LocationDetailEntity {
     @SerializedName("schedule")
     private WeekSchedule schedule;
 
-    /* getters */
+    /* getters and setters */
 
+    @Bindable
     public Integer getId() {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+        notifyPropertyChanged(BR.id);
+    }
+
+    @Bindable
     public String getName() {
         return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+        notifyPropertyChanged(BR.name);
+    }
+
+    @Bindable
     public Double getReview() {
         return review;
     }
 
+    public void setReview(Double review) {
+        this.review = review;
+        notifyPropertyChanged(BR.review);
+    }
+
+    @Bindable
     public String getType() {
         return type;
     }
 
+    public void setType(String type) {
+        this.type = type;
+        notifyPropertyChanged(BR.type);
+    }
+
+    @Bindable
     public String getAbout() {
         return about;
     }
 
+    public void setAbout(String about) {
+        this.about = about;
+        notifyPropertyChanged(BR.about);
+    }
+
+    @Bindable
     public String getPhone() {
         return phone;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+        notifyPropertyChanged(BR.phone);
+    }
+
+    @Bindable
     public String getAddress() {
         return address;
     }
 
+    public void setAddress(String address) {
+        this.address = address;
+        notifyPropertyChanged(BR.address);
+    }
+
     public WeekSchedule getSchedule() {
         return schedule;
+    }
+
+    public void setSchedule(WeekSchedule schedule) {
+        this.schedule = schedule;
     }
 }
