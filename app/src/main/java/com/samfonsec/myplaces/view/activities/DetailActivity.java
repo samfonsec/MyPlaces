@@ -7,10 +7,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.samfonsec.myplaces.R;
 import com.samfonsec.myplaces.databinding.ActDetailBinding;
 import com.samfonsec.myplaces.model.LocationDetailEntity;
+import com.samfonsec.myplaces.model.WeekSchedule;
 import com.samfonsec.myplaces.utils.DialogUtils;
 import com.samfonsec.myplaces.viewmodel.DetailViewModel;
 
@@ -21,7 +23,6 @@ import static com.samfonsec.myplaces.view.Constants.BUNDLE_ARGS;
 
 public class DetailActivity extends AppCompatActivity {
     ActDetailBinding binding;
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -39,14 +40,13 @@ public class DetailActivity extends AppCompatActivity {
         int appbarColor = bundle.getInt(ARG_ACTION_BAR_COLOR);
         int appbarImage = bundle.getInt(ARG_ICON_RES_ID);
 
-        binding.appbar.setBackgroundColor(appbarColor);
         binding.appbarImage.setImageResource(appbarImage);
+        binding.appbarImage.setColorFilter(Color.WHITE);
+        binding.collapsingToolbar.setCollapsedTitleTextColor(Color.WHITE);
+        binding.collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(Color.WHITE));
 
         viewModel.onDetailResponse().observe(this, this::onDetailResponse);
         viewModel.onError().observe(this, this::onError);
-
-        binding.collapsingToolbar.setCollapsedTitleTextColor(Color.WHITE);
-        binding.collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(Color.TRANSPARENT));
 
         DialogUtils.showProgressDialog(this);
         viewModel.getLocationDetail(locationId);
@@ -62,9 +62,19 @@ public class DetailActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    private void onDetailResponse(LocationDetailEntity entity) {
+    private void onDetailResponse(LocationDetailEntity details) {
         DialogUtils.hideProgressDialog();
+        binding.setDetail(details);
+        binding.collapsingToolbar.setVisibility(View.VISIBLE);
 
+        binding.reviewLayout.setReview(details.getReview(), true);
+
+        setOperationHours(details.getSchedule());
+
+    }
+
+    private void setOperationHours(WeekSchedule schedule) {
+        // todo show schedule
     }
 
     private void onError(String message) {

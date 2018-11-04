@@ -2,7 +2,7 @@ package com.samfonsec.myplaces.model;
 
 import com.google.gson.annotations.SerializedName;
 
-class WeekSchedule {
+public class WeekSchedule {
     @SerializedName("monday")
     private ScheduleEntity monday;
 

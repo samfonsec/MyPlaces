@@ -42,7 +42,6 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemHo
     public void onBindViewHolder(@NonNull ItemHolder holder, int position) {
         LocationEntity location = locations.get(position);
         holder.binding.setLocation(location);
-        holder.binding.tvReview.setText(String.valueOf(location.getReview()));
         holder.binding.reviewLayout.setReview(location.getReview(), false);
 
         int iconResId = TypeIcons.getIconByType(location.getType()).getIconRes();

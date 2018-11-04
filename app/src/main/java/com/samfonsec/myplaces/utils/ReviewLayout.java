@@ -18,7 +18,7 @@ import java.util.List;
 
 
 public class ReviewLayout extends ConstraintLayout {
-    ObservableBoolean isBigLayout = new ObservableBoolean(false);
+    ObservableBoolean isDetailLayout = new ObservableBoolean(false);
     LayoutReviewBinding binding;
 
     public ReviewLayout(Context context, AttributeSet attrs) {
@@ -30,11 +30,11 @@ public class ReviewLayout extends ConstraintLayout {
         binding = DataBindingUtil.inflate(LayoutInflater.from(getContext()),
                 R.layout.layout_review, this, true);
 
-        binding.setBigLayout(isBigLayout);
+        binding.setDetailLayout(isDetailLayout);
     }
 
-    public void setReview(double review, boolean isBig) {
-        isBigLayout.set(isBig);
+    public void setReview(double review, boolean isDetail) {
+        isDetailLayout.set(isDetail);
 
         double rating = Math.round(review);
         List<ImageView> starsList = Arrays.asList(binding.ivStar1, binding.ivStar2,
@@ -42,10 +42,12 @@ public class ReviewLayout extends ConstraintLayout {
 
         for (int i = 0; i < starsList.size(); i++) {
             if (rating > i)
-                starsList.get(i).setImageResource(isBig ? R.drawable.ic_star_on : R.drawable.ic_star_on_small);
+                starsList.get(i).setImageResource(isDetail ? R.drawable.ic_star_on : R.drawable.ic_star_on_small);
             else
-                starsList.get(i).setImageResource(isBig ? R.drawable.ic_star_off : R.drawable.ic_star_off_small);
+                starsList.get(i).setImageResource(isDetail ? R.drawable.ic_star_off : R.drawable.ic_star_off_small);
         }
+
+        binding.tvRating.setText(String.valueOf(review));
     }
 
 

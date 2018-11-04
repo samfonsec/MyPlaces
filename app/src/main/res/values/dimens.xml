@@ -13,4 +13,8 @@
 
     <dimen name="card_corner_radius">16dp</dimen>
     <dimen name="actionbar_title_size">18sp</dimen>
+
+    <dimen name="rl_small_text">12sp</dimen>
+    <dimen name="rl_big_text">14sp</dimen>
+
 </resources>

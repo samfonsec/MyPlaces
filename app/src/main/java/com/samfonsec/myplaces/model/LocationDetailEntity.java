@@ -25,8 +25,8 @@ public class LocationDetailEntity extends BaseObservable {
     @SerializedName("phone")
     private String phone;
 
-    @SerializedName("address")
-    private String address;
+    @SerializedName("adress")
+    private String adress;
 
     @SerializedName("schedule")
     private WeekSchedule schedule;
@@ -94,13 +94,13 @@ public class LocationDetailEntity extends BaseObservable {
     }
 
     @Bindable
-    public String getAddress() {
-        return address;
+    public String getAdress() {
+        return adress;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-        notifyPropertyChanged(BR.address);
+    public void setAdress(String adress) {
+        this.adress = adress;
+        notifyPropertyChanged(BR.adress);
     }
 
     public WeekSchedule getSchedule() {

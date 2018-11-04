@@ -30,8 +30,11 @@
                           <map>
                             <entry key="assetSourceType" value="FILE" />
                             <entry key="color" value="14adb8" />
-                            <entry key="outputName" value="ic_coworking" />
-                            <entry key="sourceFile" value="C:\Users\samfo\Downloads\collaboration.svg" />
+                            <entry key="height" value="20" />
+                            <entry key="outputName" value="ic_pin" />
+                            <entry key="overrideSize" value="true" />
+                            <entry key="sourceFile" value="C:\Users\samfo\Downloads\pin.svg" />
+                            <entry key="width" value="20" />
                           </map>
                         </option>
                       </PersistentState>

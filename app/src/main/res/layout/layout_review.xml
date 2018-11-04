@@ -6,8 +6,9 @@
     <data>
 
         <variable
-            name="bigLayout"
+            name="detailLayout"
             type="android.databinding.ObservableBoolean" />
+
     </data>
 
     <android.support.constraint.ConstraintLayout
@@ -18,46 +19,63 @@
             android:id="@+id/ivStar1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/tvRating"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toTopOf="@id/tvRating"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_star_on" />
 
         <ImageView
             android:id="@+id/ivStar2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@{bigLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
+            android:layout_marginStart="@{detailLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
             app:layout_constraintStart_toEndOf="@id/ivStar1"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toTopOf="@id/ivStar1"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_star_on" />
 
         <ImageView
             android:id="@+id/ivStar3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@{bigLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
+            android:layout_marginStart="@{detailLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
             app:layout_constraintStart_toEndOf="@id/ivStar2"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toTopOf="@id/ivStar1"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_star_on" />
 
         <ImageView
             android:id="@+id/ivStar4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@{bigLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
+            android:layout_marginStart="@{detailLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
             app:layout_constraintStart_toEndOf="@id/ivStar3"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            app:layout_constraintTop_toTopOf="@id/ivStar1"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_star_on" />
 
         <ImageView
             android:id="@+id/ivStar5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@{bigLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
+            android:layout_marginStart="@{detailLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
             app:layout_constraintStart_toEndOf="@id/ivStar4"
+            app:layout_constraintTop_toTopOf="@id/ivStar1"
+            tools:ignore="ContentDescription"
+            tools:src="@drawable/ic_star_on" />
+
+        <TextView
+            android:id="@+id/tvRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@{detailLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
+            android:textColor="@{detailLayout ? @android:color/white : @android:color/black}"
+            android:textSize="@{detailLayout ? @dimen/rl_big_text : @dimen/rl_small_text}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/ivStar5"
             app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="ContentDescription" />
+            tools:text="3.8" />
 
     </android.support.constraint.ConstraintLayout>
 </layout>

@@ -11,8 +11,8 @@ public enum TypeIcons {
     SUPERMARKET("Supermercado", R.drawable.ic_market),
     NATURAL("Produtos naturais", R.drawable.ic_natural),
     RESTAURANT("Restaurante", R.drawable.ic_restaurant),
-    COWORKING("Coworking", R.drawable.ic_place),
-    NONE("NONE", R.drawable.ic_coworking);
+    COWORKING("Coworking", R.drawable.ic_coworking),
+    NONE("NONE", R.drawable.ic_pin);
 
     private String type;
     private int iconRes;
