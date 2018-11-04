@@ -33,8 +33,8 @@ public class ReviewLayout extends ConstraintLayout {
         binding.setDetailLayout(isDetailLayout);
     }
 
-    public void setReview(double review, boolean isDetail) {
-        isDetailLayout.set(isDetail);
+    public void setReview(double review, boolean fromDetail) {
+        isDetailLayout.set(fromDetail);
 
         double rating = Math.round(review);
         List<ImageView> starsList = Arrays.asList(binding.ivStar1, binding.ivStar2,
@@ -42,9 +42,11 @@ public class ReviewLayout extends ConstraintLayout {
 
         for (int i = 0; i < starsList.size(); i++) {
             if (rating > i)
-                starsList.get(i).setImageResource(isDetail ? R.drawable.ic_star_on : R.drawable.ic_star_on_small);
+                starsList.get(i).setImageResource(fromDetail ? R.drawable.ic_star_on :
+                        R.drawable.ic_star_on_small);
             else
-                starsList.get(i).setImageResource(isDetail ? R.drawable.ic_star_off : R.drawable.ic_star_off_small);
+                starsList.get(i).setImageResource(fromDetail ? R.drawable.ic_star_off :
+                        R.drawable.ic_star_off_small);
         }
 
         binding.tvRating.setText(String.valueOf(review));

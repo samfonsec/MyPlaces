@@ -25,7 +25,7 @@ public class WeekSchedule {
     private ScheduleEntity sunday;
 
     /* getter*/
-    public ScheduleEntity getonday() {
+    public ScheduleEntity getMonday() {
         return monday;
     }
 

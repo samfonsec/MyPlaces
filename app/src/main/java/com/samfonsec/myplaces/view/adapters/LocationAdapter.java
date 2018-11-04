@@ -49,7 +49,7 @@ public class LocationAdapter extends RecyclerView.Adapter<LocationAdapter.ItemHo
         int color = ContextCompat.getColor(context, colors[new Random().nextInt(3)]);
         holder.binding.vBackground.setBackgroundColor(color);
         holder.binding.getRoot().setOnClickListener(view ->
-                onItemClick.postValue(new ArgsDetail(location.getId(), color, iconResId))
+                onItemClick.postValue(new ArgsDetail(location.getId(), iconResId))
         );
     }
 
