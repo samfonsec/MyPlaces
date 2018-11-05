@@ -1,13 +1,14 @@
 package com.samfonsec.myplaces.viewmodel;
 
 import android.arch.lifecycle.MutableLiveData;
+import android.arch.lifecycle.ViewModel;
 
 import com.samfonsec.myplaces.data.repository.LocationDataRepository;
 import com.samfonsec.myplaces.model.LocationListEntity;
 
 import io.reactivex.observers.DisposableSingleObserver;
 
-public class HomeViewModel {
+public class HomeViewModel extends ViewModel {
     private LocationDataRepository locationDataRepository;
     private MutableLiveData<LocationListEntity> onLocationsResponse;
     private MutableLiveData<String> onError;

@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
@@ -50,6 +51,8 @@ public class DetailActivity extends AppCompatActivity {
         binding.appbarImage.setColorFilter(Color.WHITE);
         binding.collapsingToolbar.setCollapsedTitleTextColor(Color.WHITE);
         binding.collapsingToolbar.setExpandedTitleTextColor(ColorStateList.valueOf(Color.WHITE));
+        binding.collapsingToolbar.setCollapsedTitleTypeface(ResourcesCompat.getFont(this, R.font.open_sans_light));
+        binding.collapsingToolbar.setExpandedTitleTypeface(ResourcesCompat.getFont(this, R.font.open_sans_light));
 
         viewModel.onDetailResponse().observe(this, this::onDetailResponse);
         viewModel.onError().observe(this, this::onError);

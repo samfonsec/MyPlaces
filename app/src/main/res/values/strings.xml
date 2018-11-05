@@ -3,5 +3,12 @@
 
     <string name="act_home_title">Home</string>
     <string name="act_detail_label_about">SOBRE</string>
+    <string name="menu_main_home">Home</string>
+    <string name="menu_main_profile">Perfil</string>
+    <string name="frag_profile_name">Samuel Fonseca</string>
+    <string name="frag_profile_bt_follow">Seguir</string>
+    <string name="frag_profile_email">samfonsec@gmail.com</string>
+    <string name="frag_profile_phone">+55 31 99509 9336</string>
+    <string name="frag_profile_location">Belo Horizonte - MG</string>
 
 </resources>

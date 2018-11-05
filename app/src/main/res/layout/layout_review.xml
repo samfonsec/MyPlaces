@@ -70,6 +70,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@{detailLayout ? @dimen/small_margin : @dimen/extra_small_margin}"
+            android:fontFamily="@font/open_sans"
             android:textColor="@{detailLayout ? @android:color/white : @android:color/black}"
             android:textSize="@{detailLayout ? @dimen/rl_big_text : @dimen/rl_small_text}"
             app:layout_constraintBottom_toBottomOf="parent"

@@ -37,8 +37,8 @@
                     android:id="@+id/appbar_image"
                     android:layout_width="120dp"
                     android:layout_height="120dp"
-                    android:layout_marginEnd="52dp"
                     android:layout_gravity="end|center_vertical"
+                    android:layout_marginEnd="52dp"
                     android:fitsSystemWindows="true"
                     android:scaleType="centerCrop"
                     app:layout_behavior="@string/appbar_scrolling_view_behavior"
@@ -72,8 +72,8 @@
                 <com.samfonsec.myplaces.utils.ReviewLayout
                     android:id="@+id/reviewLayout"
                     android:layout_width="match_parent"
-                    android:background="@color/colorPrimary"
                     android:layout_height="wrap_content"
+                    android:background="@color/colorPrimary"
                     android:paddingStart="@dimen/big_padding"
                     android:paddingBottom="@dimen/default_padding"
                     tools:ignore="RtlSymmetry" />
