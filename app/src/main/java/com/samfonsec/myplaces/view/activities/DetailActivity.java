@@ -94,8 +94,9 @@ public class DetailActivity extends AppCompatActivity {
 
         int weekSize = weekDaysSchedule.keySet().size();
         for (Integer day : weekDaysSchedule.keySet()) {
-            WeekDays weekDay = WeekDays.getWeekDayByInt(day);
-            operationHours = operationHours.concat(weekDay.getDay() + ": ").concat(weekDaysSchedule.get(day));
+            WeekDays weekDay = WeekDays.getWeekDay(day);
+            String dayName = getString(weekDay.getDayResId());
+            operationHours = operationHours.concat(dayName + ": ").concat(weekDaysSchedule.get(day));
             weekSize--;
             if (weekSize > 0)
                 operationHours = operationHours.concat("\n");

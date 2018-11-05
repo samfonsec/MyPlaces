@@ -1,36 +1,38 @@
 package com.samfonsec.myplaces.utils;
 
+import com.samfonsec.myplaces.R;
+
 public enum WeekDays {
-    MONDAY(0, "seg"),
-    TUESDAY(1, "ter"),
-    WEDNESDAY(2, "qua"),
-    THURSDAY(3, "qui"),
-    FRIDAY(4, "sex"),
-    SATURDAY(5, "sab"),
-    SUNDAY(6, "dom"),
-    NONE(-1, "none");
+    MONDAY(0, R.string.monday),
+    TUESDAY(1, R.string.tuesday),
+    WEDNESDAY(2, R.string.wednesday),
+    THURSDAY(3, R.string.thursday),
+    FRIDAY(4, R.string.friday),
+    SATURDAY(5, R.string.saturday),
+    SUNDAY(6, R.string.sunday),
+    NONE(-1, 0);
 
 
-    private Integer dayInt;
-    private String day;
+    private Integer dayId;
+    private Integer dayResId;
 
-    WeekDays(Integer dayInt, String day) {
-        this.dayInt = dayInt;
-        this.day = day;
+    WeekDays(Integer dayId, Integer dayResId) {
+        this.dayId = dayId;
+        this.dayResId = dayResId;
     }
 
-    public Integer getDayInt() {
-        return dayInt;
+    public Integer getDayId() {
+        return dayId;
     }
 
-    public String getDay() {
-        return day;
+    public Integer getDayResId() {
+        return dayResId;
     }
 
-    public static WeekDays getWeekDayByInt(Integer dayInt) {
-        for (WeekDays value : WeekDays.values()) {
-            if (value.getDayInt().equals(dayInt)) {
-                return value;
+    public static WeekDays getWeekDay(Integer dayInt) {
+        for (WeekDays resId : WeekDays.values()) {
+            if (resId.getDayId().equals(dayInt)) {
+                return resId;
             }
         }
         return NONE;

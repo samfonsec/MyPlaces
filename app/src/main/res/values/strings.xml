@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">MyPlaces</string>
 
@@ -13,9 +14,17 @@
     <string name="frag_profile_phone">+55 31 99509 9336</string>
     <string name="frag_profile_location">Belo Horizonte - MG</string>
 
-    <string name="error_dialog_title">Ocorreu um erro</string>
-    <string name="error_dialog_message">Tente novamente</string>
+    <string name="error_dialog_title">Ocorreu um erro!</string>
+    <string name="error_dialog_message">Por favor, tente novamente. Se o erro persistir, contate o nosso suporte técnico.</string>
     <string name="error_dialog_bt_close">Fechar</string>
     <string name="error_dialog_bt_try_again">Tentar novamente</string>
+
+    <string name="monday">seg</string>
+    <string name="tuesday">ter</string>
+    <string name="wednesday">qua</string>
+    <string name="thursday">qui</string>
+    <string name="friday">sex</string>
+    <string name="saturday">sab</string>
+    <string name="sunday">dom</string>
 
 </resources>
