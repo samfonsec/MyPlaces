@@ -3,6 +3,7 @@ package com.samfonsec.myplaces.utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.view.View;
@@ -33,7 +34,8 @@ public class DialogUtils {
         }
     }
 
-    public static void showErrorDialog(Context context, String message) {
+    public static void showErrorDialog(Context context, String btText, boolean cancelable,
+                                       DialogInterface.OnClickListener listener) {
         hideProgressDialog();
 
         AlertDialog.Builder builder;
@@ -42,9 +44,14 @@ public class DialogUtils {
         } else {
             builder = new AlertDialog.Builder(context);
         }
-        builder.setMessage(message)
+
+        builder.setCancelable(cancelable);
+        builder.setPositiveButton(btText, listener);
+        builder.setTitle(R.string.error_dialog_title)
+                .setMessage(R.string.error_dialog_message)
                 .setIcon(android.R.drawable.ic_dialog_alert)
                 .show();
+
     }
 
 }

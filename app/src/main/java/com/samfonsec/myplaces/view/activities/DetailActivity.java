@@ -118,7 +118,11 @@ public class DetailActivity extends AppCompatActivity {
 
 
     private void onError(String message) {
-        DialogUtils.showErrorDialog(this, message);
+        DialogUtils.showErrorDialog(
+                this,
+                getString(R.string.error_dialog_bt_close),
+                false,
+                (v, id) -> finish());
     }
 
 }

@@ -53,8 +53,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void onLocationsResponse(LocationListEntity locationsList) {
         DialogUtils.hideProgressDialog();
-
-
     }
 
     public HomeViewModel getViewModel() {
@@ -62,7 +60,15 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onError(String message) {
-        DialogUtils.showErrorDialog(this, message);
+        DialogUtils.showErrorDialog(
+                this,
+                getString(R.string.error_dialog_bt_try_again),
+                true,
+                (dialog, id) -> {
+                    DialogUtils.showProgressDialog(MainActivity.this);
+                    viewModel.getLocations();
+                    dialog.dismiss();
+                });
     }
 
     private void clearBackStack() {
